@@ -1,0 +1,47 @@
+<?php
+/**
+ * @category     Inchoo
+ * @package     Inchoo Featured Products
+ * @authors    Mladen Lotar <mladen.lotar@surgeworks.com>, Vedran Subotic <vedran.subotic@surgeworks.com>
+ */
+?>
+<?php
+    $_productCollection=$this->getFeaturedProductCollection();
+    $_helper = $this->helper('catalog/output');
+?>
+
+   
+<div id="bloque1"><!-- "bloque1" -->
+    <?php $_collectionSize = $_productCollection->count() ?>
+    <?php $_columnCount = $this->getColumnCount(); $arT = $this->getTipo(); echo $arT; ?>
+    
+    <?php $i=0; foreach ($_productCollection as $_product): 
+        
+    
+    
+    ?>
+        
+              <div id="imagen-destacado">
+                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                
+                </div>
+                <div id="info-index">
+                   <div class="titulos-index">Producto destacado</div> 
+                   <div id="texto-destacado">
+                    <p><br /><?php echo $_product->getShortDescription() ?></p>
+                    </div>
+                   <div id="boton-infodestacado">
+                       <a href="<?php echo $_product->getProductUrl() ?>">
+                           <img src="../imagenes/muestra-masinfo.jpg" alt="" width="82" height="25" border="0" />
+                       </a>
+                   </div>
+
+                </div>
+                
+        
+        <?php endforeach ?>
+  
+
+    
+        </div>
+

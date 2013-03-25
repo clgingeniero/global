@@ -1,0 +1,17 @@
+<?php
+/**
+ * @category	design
+ * @package		base_default
+ * @copyright	Kreativkonzentrat GbR 2012
+ *
+ * Date: 04.03.12, 12:55
+ */
+?>
+<?php
+$item = $this->getGlossary();
+?>
+<h4><?php echo $item->getTitle(); ?></h4>
+<div class="glossary_entry">
+	<h2><?php echo $item->getTitle(); ?></h2>
+	<p><?php echo $item->getGlossaryContent(); ?></p>
+</div>

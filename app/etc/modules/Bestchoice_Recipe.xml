@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Bestchoice_Recipe>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Bestchoice_Recipe>
+    </modules>
+</config> 

@@ -1,0 +1,33 @@
+<?php
+/**
+ * @category	design
+ * @package		base_default
+ * @copyright	Kreativkonzentrat GbR 2012
+ *
+ * Date: 04.03.12, 12:50
+ */
+?>
+<?php
+$collection = $this->getGlossary();
+?>
+<div id="content_ppal">
+      <div id="tit_glosario"></div>
+      <div id="bloque_glosario">
+        <div id="bloque_glosario_superior">
+            <p id="escoje">Escoge una letra</p>
+
+<?php
+echo $this->getChildHtml('glossary_letter_navigation');?>
+<?php foreach ($collection as $item) :?>
+<div class="glossary_entry">
+    <img src="<?php echo $this->getSkinUrl('imagenes/bullet_glosario.png'); ?>" />
+<h3><a href="<?php echo $item->getUrl(); ?>" title="<?php echo $this->__('View glossary entry')?>"><?php echo $item->getTitle();?></a>
+</h3></div>
+    
+<?php endforeach;?>
+</div>
+          <div id="bloque_glosario_inferior"></div>
+        </div>
+          
+          </div>
+          

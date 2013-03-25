@@ -1,0 +1,25 @@
+<?php
+/**
+ * @category	design
+ * @package		base_default
+ * @copyright	Kreativkonzentrat GbR 2012
+ *
+ * Date: 04.03.12, 12:55
+ */
+?>
+<?php
+$item = $this->getGlossary();
+?>
+<div id="content_ppal">
+      <div id="tit_glosario"></div>
+      <div id="bloque_glosario">
+        <div id="bloque_glosario_superior">
+        <div id="detalle_glosario">
+            <div class="glossary_entry">
+                <img src="<?php echo $this->getSkinUrl('imagenes/bullet_glosario.png'); ?>" />
+	<h2><?php echo $item->getTitle()?></h2>
+	<p><?php echo $item->getGlossaryContent()?></p>
+        <a class="back" href="<?php echo Mage::getBaseUrl(). 'glossary' ?>">« Volver al glosario</a>
+</div></div></div>
+       <div id="bloque_glosario_inferior"></div>
+      </div></div>

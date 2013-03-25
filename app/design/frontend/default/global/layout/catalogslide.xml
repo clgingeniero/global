@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <cms_index_index>
+		<reference name="head">
+                    <action method="addCss" ifconfig="catalogslide/catalogslide_config/enabled"><stylesheet>magentothem/css/ma.catalogslide.css</stylesheet></action>
+			<action method="addJs" ifconfig="catalogslide/catalogslide_config/enabled"><script>magentothem/catalogslide/ma.jqscript.js</script></action>
+			<action method="addJs" ifconfig="catalogslide/catalogslide_config/enabled"><script>magentothem/catalogslide/ma.slidescript.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="catalog/navigation" name="catalog.nav" as="catnav" template="catalog/navigation/left.phtml"/>
+        </reference>
+    </cms_index_index>
+</layout> 

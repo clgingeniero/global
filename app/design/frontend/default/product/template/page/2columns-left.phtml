@@ -1,0 +1,111 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+   
+    
+<div id="general">
+    <?php echo $this->getChildHtml('global_notices') ?>
+   <div id="superior">
+    <div id="contene">
+    
+        <?php echo $this->getChildHtml('header') ?>
+        <?php 
+        $layer = Mage::getSingleton('catalog/layer');
+        $_category = $layer->getCurrentCategory();
+        $cname = Mage::app()->getRequest()->getControllerName(); //echo $_category->getName(); ?>
+        
+        <div id="contenedor">
+            <div class="barra-madera"></div>
+            
+         <?php   if($_category->getName() == 'Productos'): //&& $cname != 'product'): 
+          echo $this->getLayout()->createBlock('catalogslide/catalogslide')->setTemplate('magentothem/catalogslide/catalogslide.phtml')->toHtml();
+        endif;?>
+        <div id="content_catalogo_1">
+        <div id="content_catalogo_2">
+            <div id="column-left"> 
+            <?php  if(($cname != 'category') || ($_category->getName() != 'Productos')): ?>
+            <div id="menu_categorias_cat">
+            <div id="tit_categorias"><p>Catálogo</p></div>
+            <?php //$crId = Mage::getModel('catalog/category')->loadByAttribute('name', 'Default');
+            $storeId = Mage::app()->getStore()->getId();
+            $catRecipes = Mage::getModel('catalog/category')
+                    ->getCollection()
+                    ->addAttributeToSelect('name')
+                    ->addAttributeToSelect('url_path')
+                    ->addAttributeToFilter('parent_id', 20)
+                    ->addAttributeToSelect('is_active')
+                    ->setProductStoreId($storeId)
+                    ->setLoadProductCount(true)
+                    ->addAttributeToSort('position', 'asc') 
+                    ->setStoreId($storeId)
+                    ->load(); ?>
+            <ul class="lista_categoria">
+            <?php 
+            foreach($catRecipes as $ctRec){ 
+                if(ucwords($ctRec->getName()) != 'Recetas' && ucwords($ctRec->getName()) != 'Destacados') :?>
+                <li><a href="<?php echo Mage::getBaseUrl() . $ctRec->getUrlPath() ?>"><?php echo ucfirst($ctRec->getName()); ?></a></li>
+                
+                <div id="div_categorias"></div>
+                
+        <?php endif; } ?>
+            </ul>
+            </div>
+            <?php endif; ?> 
+                
+                <div class="buscador_catalogo">
+                    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalogsearch/form.mini.phtml')->toHtml(); ?>
+                </div>
+                <?php echo $this->getChildHtml('left') ?>
+            </div>
+            <div id="column-right">
+                <?php echo $this->getChildHtml('global_messages') ?>
+                <?php echo $this->getChildHtml('content') ?>
+            </div>
+        </div>
+         </div>
+            </div>
+        <div id="pie">
+            <?php echo $this->getChildHtml('footer') ?>
+            <?php echo $this->getChildHtml('before_body_end') ?>
+        </div>
+        </div>
+    </div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

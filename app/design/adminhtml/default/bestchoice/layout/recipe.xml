@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <recipe_adminhtml_recipe_index>
+        <reference name="content">
+            <block type="recipe/adminhtml_recipe" name="recipe" />
+        </reference>
+    </recipe_adminhtml_recipe_index>
+</layout>

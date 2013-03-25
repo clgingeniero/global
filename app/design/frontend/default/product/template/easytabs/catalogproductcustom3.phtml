@@ -1,0 +1,16 @@
+<?php
+if(Mage::getStoreConfig('easy_tabs/custom/customtabid3')){
+	$method = 'get' . ucfirst(Mage::getStoreConfig('easy_tabs/custom/customtabid3'));
+	$content = nl2br($this->getProduct()->$method());
+	if(!empty($content)){
+            $contentArr = explode(';', $content);
+             echo '<ul  id="ingredientes_tab">';
+            for ($i=0; $i<count($contentArr); $i++)
+            {
+                if($contentArr[$i] != '') echo '<li>' . $contentArr[$i] . '</li>'; 
+            }
+            echo '</ul>';
+	
+	}
+}
+?>

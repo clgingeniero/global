@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="head">	
+    		<action method="addJs"><script>magentothem/ma.jq.slide.js</script></action>
+    	</reference>
+	</default>
+    <catalogslide_adminhtml_catalogslide_index>
+        <reference name="content">
+            <block type="catalogslide/adminhtml_catalogslide" name="catalogslide" />
+        </reference>
+    </catalogslide_adminhtml_catalogslide_index>
+</layout>

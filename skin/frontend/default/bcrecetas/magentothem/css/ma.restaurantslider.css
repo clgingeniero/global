@@ -1,0 +1,149 @@
+.ma-restaurant-slider-contain {
+	
+	width:626px;
+	/**background:#fff; **/
+	padding-left:2%;
+        width:847px !important;
+	/*border:1px solid #DEDEDE; */
+	margin:10px 0;
+}
+.ma-restaurant-slider-title {}
+.ma-restaurant-slider-title h2 {
+	padding:5px;
+}
+.ma-restaurant-slider {}
+.restaurant-slider .jcarousel-container {
+    -moz-border-radius: 10px;
+    background: #fff;
+    border: 2px solid #000;
+}
+
+.restaurant-slider .jcarousel-container-horizontal {
+    width: 1000px;
+    padding: 10px 0px;
+	padding-left:40px;
+	margin:0 auto;
+	margin-top:80px
+}
+.restaurant-slider .jcarousel-clip-horizontal {
+    width:  960px;
+    height: 154px;
+}
+
+.restaurant-slider .jcarousel-item {
+    width: 112px !important;
+	float: left;
+    list-style: none outside none;
+	text-align:center;
+}
+
+.restaurant-slider .jcarousel-item-horizontal {
+    margin: 14px 0;
+	position: relative;
+}
+
+.restaurant-slider .jcarousel-item-placeholder {
+    background: #fff;
+    color: #000;
+}
+.restaurant-slider .product-image {
+	display:inline-block;
+	margin:0 0 8px;
+}
+
+/**
+ *  Horizontal Buttons
+ */
+.ma-restaurant-slider .jcarousel-next-horizontal {
+   /* position: absolute;
+    top: 0;
+    right: -26px;
+    width: 27px;
+    height: 68px;
+    cursor: pointer;
+    background: transparent url(../images/restaurant-next.png) no-repeat 0 0; */
+}
+
+.ma-restaurant-slider .jcarousel-next-horizontal:hover {
+    background-position: -27px 0;
+}
+
+.ma-restaurant-slider .jcarousel-next-horizontal:active {
+    background-position: -27px 0;
+}
+
+.ma-restaurant-slider .jcarousel-next-disabled-horizontal,
+.ma-restaurant-slider .jcarousel-next-disabled-horizontal:hover,
+.ma-restaurant-slider .jcarousel-next-disabled-horizontal:active {
+    cursor: default;
+    background-position: -27px 0;
+}
+
+.ma-restaurant-slider .jcarousel-prev-horizontal {
+  /*  position: absolute;
+    top: 0;
+    left: -26px;
+    width: 27px;
+    height: 68px;
+    cursor: pointer;
+    background: transparent url(../images/restaurant-prev.png) no-repeat 100% 0; */
+}
+
+.ma-restaurant-slider .jcarousel-prev-horizontal:hover {
+    background-position: 0 0;
+}
+
+.ma-restaurant-slider .jcarousel-prev-horizontal:active {
+    background-position: 0 0;
+}
+
+.ma-restaurant-slider .jcarousel-prev-disabled-horizontal,
+.ma-restaurant-slider .jcarousel-prev-disabled-horizontal:hover,
+.ma-restaurant-slider .jcarousel-prev-disabled-horizontal:active {
+    cursor: default;
+    background-position: 0 0;
+}
+
+/**
+ * This <div> element is wrapped by jCarousel around the list
+ * and has the classname "jcarousel-container".
+ */
+.ma-restaurant-slider .jcarousel-container {
+    position: relative;
+}
+.ma-restaurant-slider .jcarousel-clip {
+    z-index: 2;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+.ma-restaurant-slider .jcarousel-list {
+    z-index: 1;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+.ma-restaurant-slider .jcarousel-next {
+    z-index: 3;
+    display: none;
+}
+.ma-restaurant-slider .jcarousel-prev {
+    z-index: 3;
+    display: none;
+}
+
+.ma-restaurant-slider .ma-des {
+	
+	bottom: 10px;
+}
+.ma-restaurant-slider .ma-des-title p {
+    width: 269px;
+    text-align: center;
+    color: #FC6;}
+.ma-restaurant-slider .ma-des-title h2 {
+}
+.ma-restaurant-slider .ma-des-content {}

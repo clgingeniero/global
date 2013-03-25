@@ -1,0 +1,101 @@
+<?php if( $this->getConfig('enabled') ): ?>
+<?php
+    // Get data banner
+    $slide = $this->getDataCatalogslide();
+    $path = Mage::getBaseUrl('media');					
+    $width = $this->getConfig('width');
+    $height = $this->getConfig('height');
+    $speed = $this->getConfig('speed');
+    $interval = $this->getConfig('interval');
+    $qty_Item = $this->getConfig('qty_item');
+    /* Get max item & qty item */
+    if ($qty_Item > count($slide)) {
+        $qty_Item = count($slide);
+    }
+?>
+<?php if( count($slide) > 0 ): ?>
+<div id="content_slide_ppal">
+    <div id="menu_categorias">
+        <div id="tit_categorias"><p>Catálogo</p></div>
+    <?php //$crId = Mage::getModel('catalog/category')->loadByAttribute('name', 'Default');
+    $storeId = Mage::app()->getStore()->getId();
+    $catRecipes = Mage::getModel('catalog/category')
+            ->getCollection()
+            ->addAttributeToSelect('name')
+            ->addAttributeToSelect('url_path')
+            ->addAttributeToFilter('parent_id', 20)
+            ->addAttributeToSelect('is_active')
+            ->setProductStoreId($storeId)
+            ->setLoadProductCount(true)
+            ->addAttributeToSort('position', 'asc') 
+            ->setStoreId($storeId)
+            ->load(); ?>
+    <ul class="lista_categoria">
+    <?php 
+    foreach($catRecipes as $ctRec){ 
+        if(ucwords($ctRec->getName()) != 'Recetas' && ucwords($ctRec->getName()) != 'Destacados') :?>
+        <li><a href="<?php echo Mage::getBaseUrl() . $ctRec->getUrlPath() ?>"><?php echo ucfirst($ctRec->getName()); ?></a></li>
+        <div id="div_categorias"></div>
+   <?php endif; } ?>
+    </ul>
+     </div>
+    <div id="slide_ppal">
+          <div id="">
+       
+            <ul id="ma-catalogslide-slideshow" style="width:<?php echo $width; ?>px; height:<?php echo $height; ?>px; ">
+                <?php 
+                    $i = 1;
+                    foreach($slide as $s) {
+                        if($i <= $qty_Item) {
+                            //Get images slide show
+                            $st1 = $s['image'];
+                            $p1 = strpos($st1,'catalogslide');
+                            $st2 = substr($st1,$p1+7);
+                            $p2 = strpos($st2,'"');
+                            $imag = substr($st2,0,$p2);
+                    ?>
+                        <li>
+                             <div id="info_slide_catalogo">
+                                <div id="tit_slide_catalogo"><?php echo $s['title']?></div>
+                                <span id="p_slide_catalogo"><?php echo $s['description']?></span><br>
+                                <a href="<?php echo $s['link']?>" class="btn_vermas_grande"><span>Detalles</span></a> 
+                             </div>
+                            <?php if( $s['link'] ) { ?>
+                                <a href="<?php echo $s['link']?>" title=""><img src="<?php echo $path.'magentothem/catalog'.$imag;?>" width="<?php echo $width;?>" height="<?php echo $height;?>" alt="" /></a>												
+                            <?php } else { ?>
+                                <img src="<?php echo $path.'magentothem/catalog'.$imag;?>" width="<?php echo $width;?>" height="<?php echo $height;?>" alt="" />
+                            <?php } ?>
+                        </li>
+                <?php
+                        }//end if
+                    $i++; } // end foreach
+                ?>
+            </ul>
+            <?php if( $this->getConfig('next_back') ): ?>
+                <ul class="ma-catalogslide-nav">
+                    <li class="ma-catalogslide-prev"><a href="#">Previous</a></li>
+                    <li class="ma-catalogslide-next"><a href="#">Next</a></li>
+                </ul>
+            <?php endif; ?>
+            
+            <script type="text/javascript">
+                $bn2(document).ready(function() {                    
+                    $bn2("ul#ma-catalogslide-slideshow").cycle({
+                        fx: '<?php echo $this->getConfig('animation') ?>',
+                        speed: <?php echo $speed; ?>,
+                        timeout: <?php echo $interval; ?>,
+                        <?php if( $this->getConfig('next_back') ): ?>
+                        prev: '.ma-catalogslide-prev',
+                        next: '.ma-catalogslide-next',
+                        <?php endif; ?>
+                        pause: 1
+                    });                                        
+                });
+            </script>
+            </div>
+        </div>
+    <!-- <div id="sombra_slide_ppal"></div> -->
+    </div>
+<?php endif; ?>
+<?php endif; ?>
+

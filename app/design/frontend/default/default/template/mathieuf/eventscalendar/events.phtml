@@ -1,0 +1,22 @@
+<?php
+/**
+ * @category   MathieuF
+ * @package    MathieuF_EventsCalendar
+ * @author     Mathieu Fortin <mathieu@calinsetpopotin.com>
+ */
+//date_default_timezone_set(Mage::getStoreConfig('mathieufeventscal/general/timezone'));
+?>
+<style type="text/css">
+.calendar { background-color: white; border: 1px solid #CCC; border-spacing:0px; border-collapse: collapse; }
+.calendar-cell { background-color: white; border: 1px solid #CCC; }
+caption { font-size:30px; color:#e26703; padding:10px 0 10px 0; }
+.mouse {cursor: default;}
+.hand {cursor: pointer;}
+</style>
+
+<h4><?php echo $this->__('Events Calendar')?></h4>
+<div style="position:left;min-height:570px;">
+<?php
+echo $this->eventsCalendar(90);
+?>
+</div>

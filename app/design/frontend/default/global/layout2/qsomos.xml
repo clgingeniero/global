@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <cms_index_index>
+		<reference name="head">
+            <action method="addCss" ifconfig="qsomos/qsomos_config/enabled"><stylesheet>magentothem/css/ma.qsomos.css</stylesheet></action>
+			<action method="addJs" ifconfig="qsomos/qsomos_config/enabled"><script>magentothem/qsomos/ma.jqscript.js</script></action>
+			<action method="addJs" ifconfig="qsomos/qsomos_config/enabled"><script>magentothem/qsomos/ma.slidescript.js</script></action>
+        </reference>
+        <reference name="content">
+            <!--<block type="qsomos/qsomos" name="ma.qsomosslideshow" template="magentothem/qsomos/qsomos.phtml" />-->
+        </reference>
+    </cms_index_index>
+</layout> 

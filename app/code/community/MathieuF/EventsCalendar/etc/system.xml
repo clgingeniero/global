@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   MathieuF
+ * @package    MathieuF_EventsCalendar
+ * @author     Mathieu Fortin <mathieu@calinsetpopotin.com>
+ */
+-->
+<config>
+    <sections>
+        <mathieufeventscal translate="label comment" module="mathieufeventscal">
+            <tab>general</tab>
+            <label>Events Calendar</label>
+            <frontend_type>text</frontend_type>
+            <sort_order>300</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label comment" module="mathieufeventscal">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <show_months translate="label">
+                            <label>Number of months to display</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_months>
+                        <timezone translate="label">
+                            <label>Timezone</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_locale_timezone</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </timezone>
+                        <eventscalpage translate="label">
+                            <label>CMS Page to view other events</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_cms_page</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </eventscalpage>
+                    </fields>
+                </general>
+            </groups>
+        </mathieufeventscal>
+    </sections>
+</config>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   MathieuF
+ * @package    MathieuF_EventsCalendar
+ * @author     Mathieu Fortin <mathieu@calinsetpopotin.com>
+ */
+-->
+<layout>
+    <mathieufeventscal_events>
+        <reference name="content">
+            <block type="core/template" template="mathieuf/eventscalendar/events.phtml" name="mathieufeventscal.events" />
+        </reference>
+    </mathieufeventscal_events>
+</layout>

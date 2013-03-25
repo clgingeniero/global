@@ -1,0 +1,171 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<div id="content_ppal">
+    <?php // List mode ?>
+    
+    <?php 
+    $crId = Mage::getModel('catalog/category')->loadByAttribute('name', 'Recetas');
+    $storeId = Mage::app()->getStore()->getId();
+    $catRecipes = Mage::getModel('catalog/category')
+            ->getCollection()
+            ->addAttributeToSelect('name')
+            ->addAttributeToSelect('url_path')
+            ->addAttributeToFilter('parent_id', $crId->getId())
+            ->addAttributeToSelect('is_active')
+            ->setProductStoreId($storeId)
+            ->setLoadProductCount(true)
+            ->setStoreId($storeId)
+            ->load();
+   ?>
+    <div id="tit_recetas"></div>
+        <div id="buscar_categoria">
+          <table width="800" border="0">
+              <tr>
+          <?php $fl = 0;
+          foreach($catRecipes as $ctRec){
+              if($fl == 5){?>
+              <tr>
+              <?php } ?>
+                  <td><a href="<?php echo Mage::getBaseUrl() . $ctRec->getUrlPath() ?>"><?php echo ucwords($ctRec->getName()) . ' ( ' . $ctRec->getProductCount() .' )'?></a></td>
+              <?php $fl ++; 
+              if($fl == 4){ ?>
+              </tr>
+              <?php $fl = 0; 
+              
+              }}?>
+     </table>
+        </div>
+        <div id="buscador_letra">
+          <ul>
+            <li><a href="<?php echo Mage::getBaseUrl() . 'recetas.html' ?>">#</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=a'; ?> ">A</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=b'; ?>">B</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=c'; ?>">C</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=d'; ?>">D</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=e'; ?>">E</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=f'; ?>">F</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=g'; ?>">G</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=h'; ?>">H</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=i'; ?>">I</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=j'; ?>">J</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=k'; ?>">K</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=l'; ?>">L</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=m'; ?>">M</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=n'; ?>">N</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=ñ'; ?>">Ñ</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=o'; ?>">O</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=p'; ?>">P</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=q'; ?>">Q</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=r'; ?>">R</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=s'; ?>">S</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=t'; ?>">T</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=u'; ?>">U</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=v'; ?>">V</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=w'; ?>">W</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=x'; ?>">X</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=y'; ?>">Y</a></li>
+            <li><a href="<?php echo $this->helper('core/url')->getCurrentUrl() . '?fil=z'; ?>">Z</a></li>
+          </ul>
+        </div>
+        <div id="tit_recetas_populares"></div>
+        <?php //echo $this->getToolbarHtml() ?>
+    <?php foreach ($_productCollection as $_product): ?>
+        <?php $prod = Mage::getModel("catalog/product")->load($_product->getId());
+              $catProdIds = $prod->getCategoryIds();
+              $catProd = (isset($catProdIds[1])) ? $catProdIds[1] : $catProdIds[0] ;
+              $category = Mage::getModel('catalog/category')->load($catProd) ;
+              $_productNameStripped = "";
+        ?>
+        <div id="bloque_receta">
+            <div id="bloque_receta_superior">
+                <h1><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h1>
+                <?php // Product Image ?>
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'image'), null, true) ?>" class="product-image">
+                    <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image'); ?>" width="306" height="309" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'image'), null, true) ?>" /></a>
+                <?php // Product description ?>
+                <div id="descripcion_receta">
+                    <p><?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?></p>
+                    <div class="tit_ingredientes">Ingredientes</div>
+                    <p><?php echo $_product->getIngredients(); ?></p>
+                    <div id="link_receta"><a href="<?php echo $_product->getProductUrl() ?>">Ver detalles</a></div>
+               </div>
+               <div id="tabla_receta">
+                    <table width="230" border="0">
+                        <tr>
+                        <td width="9"><div id="bullet_recetas"></div></td>
+                        <td><span>Categoría: <?php echo ucwords($category->getName()); ?></span></td>
+                        </tr>
+                        <?php if(Mage::getSingleton('eav/config')->getAttribute('catalog_product', 'dificulty')->getData('is_visible_on_front')) : // is_visible_on_front ?>
+                        <tr> 
+                        <td><div id="bullet_recetas"></div></td>
+                        <td><span>Dificultad</span><div id="rating_<?php echo $_product->getAttributeText('dificulty'); ?>" /></td>
+                        </tr>
+                        <?php endif; ?>
+                        <?php if(Mage::getSingleton('eav/config')->getAttribute('catalog_product', 'levelcost')->getData('is_visible_on_front')) : // is_visible_on_front ?>
+                        <tr>
+                        <td><div id="bullet_recetas"></div></td>
+                        <td><span>Costo</span><div id="rating_<?php echo $_product->getAttributeText('levelcost') ?>" /> </td>
+                        </tr>
+                        <?php endif; ?>
+                        <?php if(Mage::getSingleton('eav/config')->getAttribute('catalog_product', 'time')->getData('is_visible_on_front')) : // is_visible_on_front ?>
+                        <tr>
+                        <td><div id="bullet_recetas"></div></td>
+                        <td><span>Tiempo de preparación: <?php echo $_product->getTime(); ?></span></td>
+                        </tr>
+                        <?php endif; ?>
+                    </table>
+                    </div>
+                
+               
+            </div>
+           <div id="bloque_receta_inferior"></div>
+        </div>
+    <?php endforeach; ?>
+    
+    <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+
+    
+
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?> 
+<config>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<restaurantslider>
+										<title>Banner restaurantes</title>
+									</restaurantslider>
+								</children>
+							</config>
+						</children>
+					</system>	
+					<magentothem translate="title" module="restaurantslider">
+						<title>Admin Banners</title>
+						<sort_order>71</sort_order>               
+						<children>
+							<restaurantslider translate="title" module="restaurantslider">
+								<title>Banner restaurantes</title>
+								<sort_order>0</sort_order>
+								<children>
+									<items translate="title" module="restaurantslider">
+										<title>Manage Items</title>
+										<sort_order>0</sort_order>
+										<action>restaurantslider/adminhtml_restaurantslider</action>
+									</items>
+									<configuration>
+										<title>Configuration</title>
+										<sort_order>1</sort_order>
+										<action>adminhtml/system_config/edit/section/restaurantslider</action>
+									</configuration>
+								</children>
+							</restaurantslider>
+						</children>
+					</magentothem>					
+				</children>
+			</admin>
+        </resources>
+	</acl>
+</config>

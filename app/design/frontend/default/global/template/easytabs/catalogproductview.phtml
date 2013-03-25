@@ -1,0 +1,147 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        
+<div id="bloque_dinamico_6">
+    <div id="bloque_dinamico_6_superior">
+        <div id="imagenes_catalogo"> 
+            <?php echo $this->getChildHtml('media') ?> 
+            <div class="compartir_redes">
+                        <div class="social-link">
+                    <!-- AddThis Button BEGIN -->
+                    <div class="addthis_toolbox addthis_default_style ">
+                    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                    <a class="addthis_button_tweet"></a>
+                    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                    </div>
+                    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4ebf9cd355b286dd"></script>
+                    <!-- AddThis Button END -->
+                </div>
+            </div>
+        </div>
+        <div class="detail"><?php //print_r($_product); ?>
+        <h3><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h3>
+        <br><span class="sub-title-view"><?php echo $this->__('Descripción: '); ?> </span> <span><?php echo $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'description') ?></span>
+        <br><span class="sub-title-view"><?php echo $this->__('Otros nombres: '); ?> </span> <?php echo $_helper->productAttribute($_product, nl2br($_product->getNameSec()), 'name_sec') ?>
+        <br><span class="sub-title-view"><?php echo $this->__('Marca: '); ?> </span> <?php echo $_product->getAttributeText('marca') ?>
+        <br><span class="sub-title-view"><?php echo $this->__('Peso /Cont Neto: '); ?> </span> 
+            <?php echo ($_product->getE_v_p_p_neto_gr() != "") ? $_helper->productAttribute($_product, nl2br($_product->getE_v_p_p_neto_gr()), 'e_v_p_p_neto_gr') . ' g' 
+        : $_helper->productAttribute($_product, nl2br($_product->getE_v_p_c_neto_ml()), 'e_v_p_c_neto_ml') . ' ml';  ?>
+        <br><span class="sub-title-view"><?php echo $this->__('Usos: '); ?> </span> <?php echo $_helper->productAttribute($_product, nl2br($_product->getUses()), 'uses') ?>
+        <br><span class="sub-title-view"><?php echo $this->__('Vida util (meses): '); ?> </span> <?php echo $_helper->productAttribute($_product, nl2br($_product->getLifetime()), 'lifetime') ?>
+        <br><span class="sub-title-view"><?php echo $this->__('País de origen: '); ?> </span> <?php echo $_product->getAttributeText('orign_country') ?>
+        <br><span class="sub-title-view"><?php echo $this->__('Registro sanitario: '); ?> </span> <?php echo $_helper->productAttribute($_product, nl2br($_product->getSanitaryRegisterNumber()), 'sanitary_register_number') ?>
+        <a href="<?php echo $this->helper('catalog/product_compare')->getAddUrl($_product); ?>" class="btn_comparar_producto"><span>Comparar</span></a> 
+        <!--<div id="lista_interes"><a href="<?php //echo Mage::getBaseUrl() . 'wishlist/index/add/product'. $_product->getId() ?>" onclick="productAddToCartForm.submitLight(this, '<?php //echo Mage::getBaseUrl() . 'wishlist/index/add/product'. $_product->getId() ?>'); return false;">Agregar a la lista de artículos de interés</a> </div> -->
+        <div class="add-to-box">
+                    <?php if($_product->isSaleable()): ?>
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                        <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                            <span class="or"><?php echo $this->__('OR') ?></span>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <?php echo $this->getChildHtml('addto') ?>
+                </div>
+        </div>
+    </div>
+    <div id="bloque_dinamico_6_inferior"></div>
+     
+     
+</div>
+</form>
+<?php /* $items = $_product->getRelatedProductCollection(); ?>
+<?php if($items->getSize()): ?>
+<?php
+$i = 0;
+
+foreach ($items as $_producto): 
+    $_producto =  Mage::getModel('catalog/product')->load($_producto->getId());
+    $i++;
+$class = "";
+?>
+<?php
+$a = array(2, 5, 8, 11 , 14, 17, 20, 22, 25, 28);
+
+if(in_array($i, $a, true)) $class = 'medio_catalogo'; ?>     
+<div id="bloque_dinamico_3" class="<?php echo $class; ?>">
+    <div id="bloque_dinamico_3_superior" >
+        <div id="content_img">
+<?php // Product Image  ?>
+            <a href="<?php echo $_producto->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_producto, 'small_image'), null, true) ?>" class="product-image">
+                <img src="<?php echo $this->helper('catalog/image')->init($_producto, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_producto, 'small_image'), null, true) ?>" />
+            </a>
+        </div>
+        <?php $_productNameStripped = ''; ?> 
+        <h3><a href="<?php echo $_producto->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>">
+        <?php echo $_helper->productAttribute($_producto, $_producto->getName(), 'name'); ?></a> 
+        </h3>
+            <?php // Product description ?>
+        <p>
+<?php echo $_producto->getShortDescription();  //substr($_helper->productAttribute($_producto, $_producto->getShortDescription(), 'short_description'), 0, 100) ?>
+        </p>
+        <a href="<?php echo $_producto->getProductUrl() ?>" class="btn_detalles"><span>Detalles</span></a> 
+        <a href="<?php echo $this->helper('catalog/product_compare')->getAddUrl($_producto); ?>" class="btn_comparar"><span>Detalles</span></a>
+    </div>
+    <div id="bloque_dinamico_3_inferior"></div>
+</div>
+<?php endforeach; ?>
+
+<?php endif;  */?>
+
+
+
+    <div class="tab_content">
+          <?php echo $this->getChildHtml('additional') ?>
+        <?php echo $this->getChildHtml('upsell_products') ?>
+        <?php echo $this->getChildHtml('product_additional_data') ?>
+        
+    </div>
+    <?php echo $this->getChildHtml('catalog.product.related') ?>
+    
+    
+
+
+	
+    
+    
+    
+
+   
+

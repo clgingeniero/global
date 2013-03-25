@@ -1,0 +1,17 @@
+
+#options {width:457px; margin:20px auto; text-align:right; color:#9ac1c9}
+#options a {text-decoration:none; color:#9ac1c9}
+#options a:hover {color:#033}
+
+#acc {width:457px; list-style:none; color:#033; }
+#acc h3 {width:443px; padding: 22px 6px 12px; font-weight:bold;  cursor:pointer; background:url(images/caja_ciudad.png)}
+#acc h3:hover {background:url(images/caja_ciudad.png)}
+#acc .acc-section {overflow:hidden; background:url(images/caja_mitad.png)}
+#acc .acc-content {width:425px; padding:15px; }
+
+#nested {width:425px; list-style:none; color:#033; margin-bottom:15px}
+#nested h3 {width:411px;  padding: 22px 6px 12px; font-weight:bold; margin-top:5px; cursor:pointer; background:url(images/caja_ciudad.png)}
+#nested h3:hover {background:url(images/caja_ciudad.png)}
+#nested .acc-section {overflow:hidden; }
+#nested .acc-content {width:393px; padding:15px; }
+#nested .acc-selected {background:url(images/caja_ciudad.png)}

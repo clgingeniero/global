@@ -1,0 +1,81 @@
+<?php if( $this->getConfig('enabled') ): ?>
+<?php
+    // Get data banner
+    $slide = $this->getDataQsomos();
+    $path = Mage::getBaseUrl('media');					
+    $width = $this->getConfig('width');
+    $height = $this->getConfig('height');
+    $speed = $this->getConfig('speed');
+    $interval = $this->getConfig('interval');
+    $qty_Item = $this->getConfig('qty_item');
+    /* Get max item & qty item */
+    if ($qty_Item > count($slide)) {
+        $qty_Item = count($slide);
+    }
+?>
+<?php if( count($slide) > 0 ): ?>
+<div id="content_slide_ppal">
+    <div id="slide_ppal">
+          <div id="texto_slide_qsomos">
+       
+            <ul id="ma-qsomos-slideshow" style="width:<?php echo $width; ?>px; height:<?php echo $height; ?>px; ">
+                <?php 
+                    $i = 1;
+                    foreach($slide as $s) {
+                        if($i <= $qty_Item) {
+                            //Get images slide show
+                            $st1 = $s['image'];
+                            $p1 = strpos($st1,'qsomos');
+                            $st2 = substr($st1,$p1+7);
+                            $p2 = strpos($st2,'"');
+                            $imag = substr($st2,0,$p2);
+                    ?>
+                        <li>	
+                            <div id="texto_slide_qsomos">
+                                <h1><?php echo $s['title']?></h1>
+                                <p><?php echo $s['description']?></p>
+                                <?php if( $s['link'] )  { ?>
+                                <a href="<?php echo $s['link']?>" title="">
+                                    <p>Leer más</p>
+                                </a>
+                                <?php } ?>
+                            </div>
+                            
+                                
+                            
+                                <img src="<?php echo $path.'magentothem/qsomos/'.$imag;?>" width="<?php echo $width;?>" height="<?php echo $height;?>" alt="" />
+                            
+                        </li>
+                <?php
+                        }//end if
+                    $i++; } // end foreach
+                ?>
+            </ul>
+            <?php if( $this->getConfig('next_back') ): ?>
+                <ul class="ma-qsomos-nav">
+                    <li class="ma-qsomos-prev"><a href="#">Previous</a></li>
+                    <li class="ma-qsomos-next"><a href="#">Next</a></li>
+                </ul>
+            <?php endif; ?>
+            
+            <script type="text/javascript">
+                $bn2(document).ready(function() {                    
+                    $bn2("ul#ma-qsomos-slideshow").cycle({
+                        fx: '<?php echo $this->getConfig('animation') ?>',
+                        speed: <?php echo $speed; ?>,
+                        timeout: <?php echo $interval; ?>,
+                        <?php if( $this->getConfig('next_back') ): ?>
+                        prev: '.ma-qsomos-prev',
+                        next: '.ma-qsomos-next',
+                        <?php endif; ?>
+                        pause: 1
+                    });                                        
+                });
+            </script>
+            </div>
+        </div>
+    <div id="sombra_slide_ppal"></div>
+    </div>
+<?php endif; ?>
+<?php endif; ?>
+

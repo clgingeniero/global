@@ -1,0 +1,26 @@
+<?php
+/**
+ * @category   MathieuF
+ * @package    MathieuF_EventsCalendar
+ * @author     Mathieu Fortin <mathieu@calinsetpopotin.com>
+ */
+date_default_timezone_set(Mage::getStoreConfig('mathieufeventscal/general/timezone'));
+?>
+<style type="text/css">
+.todaycal { border:1px solid #999; }
+caption { font-size:30px; color:#db8; height:100px; }
+.mouse {cursor: default;}
+.hand {cursor: pointer;}
+</style>
+
+<div class="box base-mini">
+<div class="head">
+	<h4><?php echo $this->__('Upcoming Events')?></h4>
+</div>
+<div class="content">
+<?php
+echo $this->eventsList(3);
+?>
+<div align=center style="padding-top:3px;"><a href="<?php echo Mage::getBaseUrl().Mage::getStoreConfig('mathieufeventscal/general/eventscalpage')?>"><?php echo $this->__('View all events')?></a></div>
+</div>
+</div>

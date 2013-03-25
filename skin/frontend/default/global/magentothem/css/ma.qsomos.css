@@ -1,0 +1,40 @@
+.ma-qsomos-container {
+	border:1px solid #dedede;
+}
+.ma-qsomos-wrapper {
+    position: relative;
+}
+#ma-qsomos-slideshow {
+    overflow: hidden;
+}
+.ma-qsomos-nav {}
+.ma-qsomos-prev, .ma-qsomos-next {
+    position: absolute;
+    top: 77%;
+    z-index:17;
+}
+.ma-qsomos-prev {
+    left: 25px;
+}
+.ma-qsomos-next {
+    right: 852px;
+}
+.ma-qsomos-prev a, .ma-qsomos-next a {
+	width: 30px;
+	height: 30px;
+	padding: 5px;
+	display: block;
+	text-indent: -9999px;
+}
+.ma-qsomos-prev a {
+	background: url(../images/bn4-prev.png) 0 0 no-repeat;
+}
+.ma-qsomos-prev a:hover {
+	background: url(../images/bn4-prev.png) 100% 0 no-repeat;
+}
+.ma-qsomos-next a {
+	background: url(../images/bn4-next.png) 100% 0 no-repeat;
+}
+.ma-qsomos-next a:hover {
+	background: url(../images/bn4-next.png) 0 0 no-repeat;
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0"?> 
+<config>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<qsomos>
+										<title>Banner quienes somos</title>
+									</qsomos>
+								</children>
+							</config>
+						</children>
+					</system>	
+					<magentothem translate="title" module="qsomos">
+						<title>Admin Banners</title>
+						<sort_order>71</sort_order>               
+						<children>
+							<qsomos translate="title" module="qsomos">
+								<title>Banner quienes somos</title>
+								<sort_order>0</sort_order>
+								<children>
+									<items translate="title" module="qsomos">
+										<title>Manage Items</title>
+										<sort_order>0</sort_order>
+										<action>qsomos/adminhtml_qsomos</action>
+									</items>
+									<configuration>
+										<title>Configuration</title>
+										<sort_order>1</sort_order>
+										<action>adminhtml/system_config/edit/section/qsomos</action>
+									</configuration>
+								</children>
+							</qsomos>
+						</children>
+					</magentothem>					
+				</children>
+			</admin>
+        </resources>
+	</acl>
+</config>
